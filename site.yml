@@ -1,7 +1,7 @@
 ---
 - name: "Nginx CICD Github Actions Playground"
   hosts: all
-  gather_facts: false
+  gather_facts: true
 
   roles:
     - roles/nginx
