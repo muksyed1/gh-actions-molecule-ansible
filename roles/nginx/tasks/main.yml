@@ -1,0 +1,23 @@
+---
+
+# Apt update cache
+- name: "Apt Update cache"
+  ansible.builtin.apt:
+    update_cache: true
+
+# Install Nginx
+- name: "Install Nginx"
+  ansible.builtin.apt:
+    name: "nginx"
+    state: present
+  notify: "Nginx"
+
+# Write the Index Page
+- name: "Write Index Page"
+  ansible.builtin.template:
+    dest: /var/www/html/index.html
+    src: index.html.j2
+    owner: www-data
+    group: www-data
+    mode: '0644'
+  notify: "Nginx"

@@ -1,0 +1,11 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Fetch the index page
+      ansible.builtin.uri:
+        url: http://localhost
+        return_content: true
+      register: result
+      failed_when: "'Managed by Ansible' not in result.content"
