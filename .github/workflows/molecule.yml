@@ -14,6 +14,10 @@ defaults:
   run:
     working-directory: roles/nginx
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   full-run:
     runs-on: ubuntu-latest
