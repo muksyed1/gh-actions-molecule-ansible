@@ -15,7 +15,7 @@ defaults:
     working-directory: roles/nginx
 
 jobs:
-  setup:
+  full-run:
     runs-on: ubuntu-latest
 
     steps:
