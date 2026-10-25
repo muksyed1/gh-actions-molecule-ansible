@@ -75,8 +75,11 @@ Tested on Ubuntu 22.04 (jammy) using the
 
 ## CI
 
-A GitHub Actions workflow that runs `molecule test` on every push and pull
-request is planned.
+A GitHub Actions workflow (`.github/workflows/molecule.yml`) runs on every push
+to `main`, on pull requests, and on manual dispatch. It sets up Python 3.13,
+installs `requirements.txt`, lints with `yamllint` and `ansible-lint`, then runs
+the Molecule sequence against `roles/nginx`: create, converge, idempotence,
+verify and destroy.
 
 ## License
 
