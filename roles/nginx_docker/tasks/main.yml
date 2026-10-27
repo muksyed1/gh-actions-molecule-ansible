@@ -1,0 +1,23 @@
+---
+- name: "Create content directory"
+  ansible.builtin.file:
+    path: /opt/docker/nginx
+    state: directory
+    mode: '0755'
+
+- name: "Render index page"
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /opt/docker/nginx/index.html
+    mode: '0644'
+
+- name: "Run nginx container"
+  community.docker.docker_container:
+    name: nginx
+    image: nginx:stable
+    state: started
+    restart_policy: unless-stopped
+    published_ports:
+      - "80:80"
+    volumes:
+      - /opt/docker/nginx/index.html:/usr/share/nginx/html/index.html:ro

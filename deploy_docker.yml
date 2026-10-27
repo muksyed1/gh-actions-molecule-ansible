@@ -1,0 +1,6 @@
+- name: "Nginx Docker Deploy in AWS Instance"
+  hosts: runner
+  become: true
+
+  roles:
+    - roles/nginx_docker
